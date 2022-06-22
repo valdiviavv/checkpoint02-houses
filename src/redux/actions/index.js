@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const GET_ALL_HOUSES = 'GET_ALL_HOUSES';
 export const CREATE_HOUSE = 'CREATE_HOUSE';
 export const GET_HOUSE = 'GET_HOUSE';
@@ -13,7 +15,13 @@ export const DELETE_HOUSE = 'DELETE_HOUSE';
 
 // Usar ruta 'http://localhost:3000/houses' para buscar todas las houses en nuestro back.
 // Esto lo vas a poder hacer utilizando fetch.
-export const getAllHouses = () => dispatch => {};
+export const getAllHouses = () => async dispatch => {
+    const response = await axios.get('http://localhost:3000/houses');
+    dispatch({
+        type: GET_ALL_HOUSES,
+        payload: response.data
+    })
+};
 
 // Usar ruta 'http://localhost:3000/houses/:id' para buscar una house por el id pasado
 // como parámetro de la action creator.

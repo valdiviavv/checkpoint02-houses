@@ -1,5 +1,5 @@
 // Importa las actions types que necesites acá:
-import {GET_ALL_HOUSES} from "../actions";
+import {DELETE_HOUSE, GET_ALL_HOUSES} from "../actions";
 
 const initialState = {
     houses: [],
@@ -13,6 +13,11 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 houses: action.payload
+            }
+        case DELETE_HOUSE:
+            return {
+                ...state,
+                houses: state.houses.filter(house => house.id !== action.payload)
             }
         default:
             return state;

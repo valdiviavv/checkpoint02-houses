@@ -37,4 +37,9 @@ export const getHouse = () => dispatch => {};
 export const createHouse = undefined;
 
 // Desde el componente ejecutamos la action creator, pasandole como argumento el id de la house que queremos eliminar.
-export const deleteHouse = undefined;
+export const deleteHouse = houseId => {
+    return {
+        type: DELETE_HOUSE,
+        payload: houseId
+    };
+};

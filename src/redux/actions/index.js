@@ -27,7 +27,13 @@ export const getAllHouses = () => async dispatch => {
 // como parámetro de la action creator.
 // Donde :id, el id recibido como argumento de la action creator.
 // Ojo, hacer un console.log de la respuesta desde el back. En nuestro reducer esperamos un objeto;
-export const getHouse = () => dispatch => {};
+export const getHouse = (id) => async dispatch => {
+    const response = await axios.get(`http://localhost:3000/houses/${id}`);
+    dispatch({
+        type: GET_HOUSE,
+        payload: response.data
+    })
+};
 
 // Inicializamos id en 3, para que nuestros próximos ID's no se pisen con los existentes.
 // La vas a usar en la funcion createHouse, descomentala cuando te haga falta;

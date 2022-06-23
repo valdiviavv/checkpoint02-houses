@@ -37,10 +37,15 @@ export const getHouse = (id) => async dispatch => {
 
 // Inicializamos id en 3, para que nuestros próximos ID's no se pisen con los existentes.
 // La vas a usar en la funcion createHouse, descomentala cuando te haga falta;
-// let id = 3;
+let id = 3;
 
 // Desde el componente ejecutamos la action creator, pasandole como argumento los values que vamos a utilizar para crear la house.
-export const createHouse = undefined;
+export const createHouse = house => {
+    return {
+        type: CREATE_HOUSE,
+        payload: { id: ++id, ...house}
+    }
+};
 
 // Desde el componente ejecutamos la action creator, pasandole como argumento el id de la house que queremos eliminar.
 export const deleteHouse = houseId => {
